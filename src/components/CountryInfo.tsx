@@ -1,26 +1,16 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Image, Card, Stack } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { CountryInfoProps } from "../models/models";
+import "../styles/common.css";
 
 const mapContainerStyle = {
-  height: "70vh",
+  height: "65vh",
 };
 
-
-const CountryInfo = (props: any) => {
-  const testCountryInfo = {
-    name: "Pakistan",
-    region: "Asia",
-    flag: "https://flagcdn.com/w320/pk.png",
-    capital: "Islamabad",
-    population: 220892331,
-    languages: ["Urdu", "Eng"],
-    currencies: ["PKR"],
-    center: {
-      lat: 30,
-      lng: 70,
-    },
-  };
+const CountryInfo = (props: CountryInfoProps) => {
+  const { parsedCountryInfo } = props;
+  const { status, data: countryInfoData, msg } = parsedCountryInfo;
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCJs1hNcXYdT3GcD3SkkNmdbVehrs5X3lw",
@@ -35,61 +25,104 @@ const CountryInfo = (props: any) => {
     return <div>Loading maps</div>;
   }
 
+  if (!parsedCountryInfo) {
+    return <></>;
+  }
+
+  if (status == 404) {
+    return <div>{msg}</div>;
+  }
+
   return (
     <Container>
-      <Row>
-        <Col>
-          {/* Heading */}
-          <h1>{testCountryInfo.name}</h1>
-          <p>Country in {testCountryInfo.region}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={4}>
-          <div>
-            <img
+      <Stack gap={4}>
+        <Row>
+          <Col>
+            {/* Heading */}
+            <h1 className="mt-5">{countryInfoData.name}</h1>
+            <Card.Title>Country in {countryInfoData.region}</Card.Title>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col lg={3}>
+            <Image
+              className="shadow-sm "
+              bsPrefix="img"
               style={{
-                height: 100,
-                width: 200,
-                objectFit: "contain",
-                // boxShadow: "borderbox",
+                width: 245.22,
+                height: "10rem",
               }}
-              src={testCountryInfo.flag}
+              rounded
+              src={countryInfoData.flag}
             />
-          </div>
-        </Col>
-        <Col lg={4}>
-          <div>
-            <p>Capital:</p>
-            <h1>{testCountryInfo.capital}</h1>
-          </div>
-        </Col>
-        <Col lg={4}>
-          <div>
-            <p>Population:</p>
-            <h1>{testCountryInfo.population}</h1>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+          <Col lg={3}>
+            <Card style={{ height: "10rem" }} className="shadow-sm">
+              <Card.Body>
+                <Card.Title>Capital:</Card.Title>
+                <h2
+                  className="text-center"
+                  style={{
+                    color: "cadetblue",
+                  }}
+                >
+                  {countryInfoData.capital}
+                </h2>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col lg={3}>
+            <Card style={{ height: "10rem" }} className="shadow-sm  ">
+              <Card.Body>
+                <Card.Title>Population:</Card.Title>
+                <h2
+                  className="text-center "
+                  style={{
+                    color: "cadetblue",
+                  }}
+                >
+                  {countryInfoData.population}
+                </h2>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={12}>
+            <Stack direction="horizontal" gap={3}>
+              <Card.Title>Languages:</Card.Title>
+              <h2
+                style={{
+                  color: "cadetblue",
+                }}
+              >
+                {countryInfoData.languages.join(", ")}
+              </h2>
+            </Stack>
+          </Col>
+          <Col>
+            <Stack direction="horizontal" gap={3}>
+              <Card.Title>Currencies:</Card.Title>
+              <h2
+                style={{
+                  color: "cadetblue",
+                }}
+              >
+                {countryInfoData.currencies}
+              </h2>
+            </Stack>
+          </Col>
+        </Row>
+      </Stack>
       <Row>
-        <Col lg={12}>
-          <p>Languages:</p>
-          <h1>{testCountryInfo.languages.join(", ")}</h1>
-        </Col>
         <Col>
-          <p>Currencies:</p>
-          <h1>{testCountryInfo.currencies.join(", ")}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div>
+          <div className="mt-4">
             <GoogleMap
               mapContainerStyle={mapContainerStyle}
               zoom={6}
-              center={testCountryInfo.center}
+              center={countryInfoData.center}
             >
-              <Marker position={testCountryInfo.center} />
+              <Marker position={countryInfoData.center} />
             </GoogleMap>
           </div>
         </Col>

@@ -5,20 +5,18 @@ import { Container, Row, Col } from "react-bootstrap";
 import "../styles/common.css";
 
 const CountryInfoContainer = (props: any) => {
+  const [parsedCountryInfo, setParsedCountryInfo] = React.useState(null);
+
   return (
     <Container fluid>
       <Row className="full-height">
-        <Col
-          lg={5}
-          className="align-center"
-          style={{
-            // backgroundColor: "green",
-          }}
-        >
-          <SearchCountry />
+        <Col lg={5} className="align-center shadow">
+          <SearchCountry setParsedCountryInfo={setParsedCountryInfo} />
         </Col>
         <Col lg={7}>
-          <CountryInfo />
+          {parsedCountryInfo ? (
+            <CountryInfo parsedCountryInfo={parsedCountryInfo} />
+          ) : <></>}
         </Col>
       </Row>
     </Container>
