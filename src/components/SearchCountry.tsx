@@ -11,7 +11,8 @@ import "../styles/common.css";
 const SearchCountry = (props: SeachCountryProps) => {
   const [countryName, setCountryName] = React.useState("");
   const { setParsedCountryInfo } = props;
-  const [error, setError] = React.useState("");
+  const [isError, setError] = React.useState(false);
+
   const getCountryInfo = () => {
     if (countryName.trimStart().length > 0) {
       axios
@@ -20,9 +21,17 @@ const SearchCountry = (props: SeachCountryProps) => {
           setParsedCountryInfo(response.data);
           console.log(response.data);
         });
-      setError("");
+      setError(false);
     } else {
-      setError("Empty");
+      setError(true);
+    }
+  };
+
+  const handleKeyDown = (e: any) => {
+    
+    if (e.key === "Enter") {
+      e.preventDefault()
+      getCountryInfo();
     }
   };
 
@@ -45,15 +54,16 @@ const SearchCountry = (props: SeachCountryProps) => {
         <Form.Group>
           <Form.Label>Explore country insights with just a click!</Form.Label>
           <Row>
-            <Stack direction="horizontal" gap ={1}>
+            <Stack direction="horizontal" gap={1}>
               <Col lg="11">
                 <Form.Control
+                  onKeyDown={handleKeyDown}
                   value={countryName}
                   type="text"
                   placeholder="e.g. Ireland"
                   onChange={handleForm}
+                  isInvalid={isError}
                 />
-                {error && <div>Please Enter A Name</div>}
               </Col>
               <Col lg="1">
                 <Button variant="outline-none" onClick={getCountryInfo}>
@@ -68,6 +78,17 @@ const SearchCountry = (props: SeachCountryProps) => {
                 </Button>
               </Col>
             </Stack>
+          </Row>
+          <Row>
+            {isError && (
+              <div
+                style={{
+                  color: "red",
+                }}
+              >
+                Please Enter a Valid Country Name
+              </div>
+            )}
           </Row>
         </Form.Group>
       </Form>

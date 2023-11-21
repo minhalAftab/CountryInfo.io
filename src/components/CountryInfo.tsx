@@ -3,6 +3,7 @@ import { Col, Container, Row, Image, Card, Stack } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { CountryInfoProps } from "../models/models";
 import "../styles/common.css";
+import CountryNotFound from "./CountryNotFound";
 
 const mapContainerStyle = {
   height: "65vh",
@@ -30,7 +31,7 @@ const CountryInfo = (props: CountryInfoProps) => {
   }
 
   if (status == 404) {
-    return <div>{msg}</div>;
+    return <CountryNotFound />;
   }
 
   return (
