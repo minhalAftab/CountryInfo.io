@@ -27,11 +27,14 @@ This project entails the creation of a web application that facilitates a user's
 
 1. **Minimalist Landing Page:**
     - Emphasizes simplicity to highlight the primary call-to-action, which is the country search feature.
+   ![alt text](https://github.com/minhalAftab/CountryInfo.io/blob/master/src/assets/landingPage.png)
 
 2. **Structured Information Display:**
     - Presents relevant country details in a clear and easily readable format, prioritizing important information.
+   ![alt text](https://github.com/minhalAftab/CountryInfo.io/blob/master/src/assets/successfulSearch.png)
 
 3. **Error Handling for Incorrect Inputs:**
     - Provides user-friendly error messages in case of incorrect country name entries, ensuring a seamless user experience.
+   ![alt text](https://github.com/minhalAftab/CountryInfo.io/blob/master/src/assets/unsuccessfulSearch.png)
+   ![alt text](https://github.com/minhalAftab/CountryInfo.io/blob/master/src/assets/successfulSearchMapUnloaded.png)
 
-#
