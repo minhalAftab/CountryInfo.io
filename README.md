@@ -1,24 +1,37 @@
 # Hi There 🖐️
-### This is a Coding Challenge for Bounce Insights Software Engineering Intern position
-
----
-#### Project description : 
-Create a webpage that takes in a country name, and makes an API call to RESTCountries and receives the information. Once that information is received it should be shown on the screen. 
-
-#### My Process: 
-1. I created a basic wireframe mockup of the interface
-2. Then I created a more Hi-fidelity Design of that mockup.
-3. Then I implemented the design on react.
-4. I then implemented a map by using the lattitude and langtitude received from API.
-
-#### My Screens Designs: 
-1. Very Minimal Landing Page :
-   This was kept minimal so the main call to action would be the search feature.
-
-2. Basic infomartion Displayed in a Readable Manner : 
-   This Showcases the more relevant and important information more prominently. 
-
-3. Incase of incorrect Country Name Error is shown:
-   This showcases error handling.
 
 
+## Project Description
+
+This project entails the creation of a web application that facilitates a user's input of a country name. The application will then make an API call to RESTCountries to retrieve and display pertinent information about the specified country.
+
+### Process Overview:
+
+1. **Wireframe Development:**
+    - Initial creation of a basic mockup to outline the user interface's structure and functionalities.
+
+2. **High-Fidelity Design:**
+    - Enhanced and detailed design development based on the wireframe, focusing on user experience and visual aesthetics.
+
+3. **Implementation using React:**
+    - Translating the designed interface into a functional web application using React framework.
+
+4. **Integration of Geographic Information:**
+    - Utilization of latitude and longitude data obtained from the API to incorporate a geographical map feature.
+
+#
+
+      
+
+### Screen Designs:
+
+1. **Minimalist Landing Page:**
+    - Emphasizes simplicity to highlight the primary call-to-action, which is the country search feature.
+
+2. **Structured Information Display:**
+    - Presents relevant country details in a clear and easily readable format, prioritizing important information.
+
+3. **Error Handling for Incorrect Inputs:**
+    - Provides user-friendly error messages in case of incorrect country name entries, ensuring a seamless user experience.
+
+#
