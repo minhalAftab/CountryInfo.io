@@ -7,3 +7,11 @@
   align-items: center;
   display: flex;
 }
+
+.gradient {
+  background: linear-gradient(360deg, white, rgb(244, 250, 249) 40%);
+}
+
+.map-background {
+  background-color: #ff0000;
+}

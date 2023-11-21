@@ -1,5 +1,5 @@
 import React from "react";
-import CountryNotFoundImage from "../assets/countrynotfound.png";
+import CountryNotFoundImage from "../assets/countryNotFound.png";
 import { Col, Container, Image, Row } from "react-bootstrap";
 
 const CountryNotFound = (props: any) => {

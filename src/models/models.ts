@@ -5,7 +5,7 @@ export interface CountryInfoDTO {
   capital: string;
   population: number;
   languages: string[];
-  currencies: string[];
+  currencies: string;
   center: {
     lat: number;
     lng: number;
@@ -18,6 +18,16 @@ export type CountryInfoProps = {
 
 export type SeachCountryProps = {
   setParsedCountryInfo: React.Dispatch<React.SetStateAction<null>>;
+};
+
+export type InfoCardProps = {
+  header: string;
+  content: string | number;
+};
+
+export type InfoRowProps = {
+  header: string;
+  content: string;
 };
 
 export interface GetCountryInfoOutput {

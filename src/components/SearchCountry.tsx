@@ -1,5 +1,5 @@
 import React from "react";
-import CountryInfoLogo from "../assets/countryinfologo.png";
+import CountryInfoLogo from "../assets/countryInfoLogo.png";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Button, Col, Stack } from "react-bootstrap";
@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import { FaSearch } from "react-icons/fa";
 import { SeachCountryProps } from "../models/models";
 import "../styles/common.css";
+import { ENTER_KEY } from "../models/constants";
 
 const SearchCountry = (props: SeachCountryProps) => {
   const [countryName, setCountryName] = React.useState("");
@@ -14,9 +15,10 @@ const SearchCountry = (props: SeachCountryProps) => {
   const [isError, setError] = React.useState(false);
 
   const getCountryInfo = () => {
-    if (countryName.trimStart().length > 0) {
+    const trimedCountryName = countryName.trimStart();
+    if (trimedCountryName.length > 0) {
       axios
-        .get(`http://localhost:4000/country/${countryName.trimStart()}`)
+        .get(`http://localhost:4000/country/${trimedCountryName}`)
         .then((response) => {
           setParsedCountryInfo(response.data);
           console.log(response.data);
@@ -28,9 +30,8 @@ const SearchCountry = (props: SeachCountryProps) => {
   };
 
   const handleKeyDown = (e: any) => {
-    
-    if (e.key === "Enter") {
-      e.preventDefault()
+    if (e.key === ENTER_KEY) {
+      e.preventDefault();
       getCountryInfo();
     }
   };
@@ -42,7 +43,7 @@ const SearchCountry = (props: SeachCountryProps) => {
   return (
     <div className="main-background ">
       <img
-        className="mb-4"
+        className="mb-3"
         style={{
           height: 32,
         }}

@@ -4,6 +4,11 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { CountryInfoProps } from "../models/models";
 import "../styles/common.css";
 import CountryNotFound from "./CountryNotFound";
+import { HTTP_STATUS_CODE } from "../models/enums";
+import { GOOGLE_MAPS_API_KEY } from "../models/constants";
+import InfoCard from "./InfoCard";
+import InfoRow from "./InfoRow";
+import ErrorLoadingMap from "./ErrorLoadingMap";
 
 const mapContainerStyle = {
   height: "65vh",
@@ -14,13 +19,9 @@ const CountryInfo = (props: CountryInfoProps) => {
   const { status, data: countryInfoData, msg } = parsedCountryInfo;
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCJs1hNcXYdT3GcD3SkkNmdbVehrs5X3lw",
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
-
-  if (loadError) {
-    return <div>Error loading maps</div>;
-  }
 
   if (!isLoaded) {
     return <div>Loading maps</div>;
@@ -30,7 +31,7 @@ const CountryInfo = (props: CountryInfoProps) => {
     return <></>;
   }
 
-  if (status == 404) {
+  if (status == HTTP_STATUS_CODE.NOT_FOUND) {
     return <CountryNotFound />;
   }
 
@@ -58,74 +59,46 @@ const CountryInfo = (props: CountryInfoProps) => {
             />
           </Col>
           <Col lg={3}>
-            <Card style={{ height: "10rem" }} className="shadow-sm">
-              <Card.Body>
-                <Card.Title>Capital:</Card.Title>
-                <h2
-                  className="text-center"
-                  style={{
-                    color: "cadetblue",
-                  }}
-                >
-                  {countryInfoData.capital}
-                </h2>
-              </Card.Body>
-            </Card>
+            <InfoCard header={"Capital"} content={countryInfoData.capital} />
           </Col>
           <Col lg={3}>
-            <Card style={{ height: "10rem" }} className="shadow-sm  ">
-              <Card.Body>
-                <Card.Title>Population:</Card.Title>
-                <h2
-                  className="text-center "
-                  style={{
-                    color: "cadetblue",
-                  }}
-                >
-                  {countryInfoData.population}
-                </h2>
-              </Card.Body>
-            </Card>
+            <InfoCard
+              header={"Population"}
+              content={countryInfoData.population}
+            />
           </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <Stack direction="horizontal" gap={3}>
-              <Card.Title>Languages:</Card.Title>
-              <h2
-                style={{
-                  color: "cadetblue",
-                }}
-              >
-                {countryInfoData.languages.join(", ")}
-              </h2>
-            </Stack>
+            <InfoRow
+              header={"Languages"}
+              content={countryInfoData.languages.join(", ")}
+            />
           </Col>
           <Col>
-            <Stack direction="horizontal" gap={3}>
-              <Card.Title>Currencies:</Card.Title>
-              <h2
-                style={{
-                  color: "cadetblue",
-                }}
-              >
-                {countryInfoData.currencies}
-              </h2>
-            </Stack>
+            <InfoRow
+              header={"Currencies"}
+              content={countryInfoData.currencies}
+            />
           </Col>
         </Row>
       </Stack>
+      {/* Map */}
       <Row>
         <Col>
-          <div className="mt-4">
-            <GoogleMap
-              mapContainerStyle={mapContainerStyle}
-              zoom={6}
-              center={countryInfoData.center}
-            >
-              <Marker position={countryInfoData.center} />
-            </GoogleMap>
-          </div>
+          {loadError ? (
+            <ErrorLoadingMap />
+          ) : (
+            <div className="mt-4">
+              <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                zoom={6}
+                center={countryInfoData.center}
+              >
+                <Marker position={countryInfoData.center} />
+              </GoogleMap>
+            </div>
+          )}
         </Col>
       </Row>
     </Container>
