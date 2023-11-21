@@ -10,15 +10,15 @@ const CountryInfoContainer = (props: any) => {
   const [loading, setLoading] = React.useState(false);
 
   return (
-    <Container fluid>
+    <Container fluid className="gradient">
       <Row className="full-height">
-        <Col lg={5} className="align-center shadow gradient">
+        <Col lg={5} className="align-center  ">
           <SearchCountry
             setParsedCountryInfo={setParsedCountryInfo}
             setLoading={setLoading}
           />
         </Col>
-        <Col lg={7}>
+        <Col lg={7} className={`${parsedCountryInfo? "shadow-sm": ""}`}>
           {parsedCountryInfo ? (
             <CountryInfo
               parsedCountryInfo={parsedCountryInfo}
