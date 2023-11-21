@@ -7,7 +7,7 @@ Create a webpage that takes in a country name, and makes an API call to RESTCoun
 
 #### My Process: 
 1. I created a basic wireframe mockup of the interface
-2. Then I created a more Hi-fedelity Design of that mockup.
+2. Then I created a more Hi-fidelity Design of that mockup.
 3. Then I implemented the design on react.
 4. I then implemented a map by using the lattitude and langtitude received from API.
 
