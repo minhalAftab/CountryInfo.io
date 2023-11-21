@@ -1,5 +1,13 @@
 import React from "react";
-import { Col, Container, Row, Image, Card, Stack } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Row,
+  Image,
+  Card,
+  Stack,
+  Spinner,
+} from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { CountryInfoProps } from "../models/models";
 import "../styles/common.css";
@@ -14,21 +22,26 @@ const mapContainerStyle = {
   height: "65vh",
 };
 
+const loadingComponent = () => {
+  return (
+    <Container className="full-height align-center">
+      <Spinner animation="border" />
+    </Container>
+  );
+};
+
 const CountryInfo = (props: CountryInfoProps) => {
-  const { parsedCountryInfo } = props;
+  const { parsedCountryInfo, loading } = props;
   const { status, data: countryInfoData, msg } = parsedCountryInfo;
 
+  console.log(loading);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
 
-  if (!isLoaded) {
-    return <div>Loading maps</div>;
-  }
-
-  if (!parsedCountryInfo) {
-    return <></>;
+  if (!isLoaded || loading) {
+    return loadingComponent();
   }
 
   if (status == HTTP_STATUS_CODE.NOT_FOUND) {

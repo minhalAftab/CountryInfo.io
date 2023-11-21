@@ -11,8 +11,8 @@ import { ENTER_KEY } from "../models/constants";
 
 const SearchCountry = (props: SeachCountryProps) => {
   const [countryName, setCountryName] = React.useState("");
-  const { setParsedCountryInfo } = props;
   const [isError, setError] = React.useState(false);
+  const { setParsedCountryInfo, setLoading } = props;
 
   const getCountryInfo = () => {
     const trimedCountryName = countryName.trimStart();
@@ -20,10 +20,12 @@ const SearchCountry = (props: SeachCountryProps) => {
       axios
         .get(`http://localhost:4000/country/${trimedCountryName}`)
         .then((response) => {
+          setLoading(false);
           setParsedCountryInfo(response.data);
           console.log(response.data);
         });
       setError(false);
+      setLoading(true);
     } else {
       setError(true);
     }
