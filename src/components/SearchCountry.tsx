@@ -18,7 +18,7 @@ const SearchCountry = (props: SeachCountryProps) => {
     const trimedCountryName = countryName.trimStart();
     if (trimedCountryName.length > 0) {
       axios
-        .get(`http://localhost:4000/country/${trimedCountryName}`)
+        .get(`https://country-info-io.vercel.app/country/${trimedCountryName}`)
         .then((response) => {
           setLoading(false);
           setParsedCountryInfo(response.data);

@@ -3,7 +3,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const router = require("./routes/router");
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -24,4 +23,3 @@ const server = app.listen(port, () => {
 });
 
 
-module.exports = app
