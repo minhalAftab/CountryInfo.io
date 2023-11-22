@@ -44,7 +44,7 @@ const CountryInfo = (props: CountryInfoProps) => {
     return loadingComponent();
   }
 
-  if (status == HTTP_STATUS_CODE.NOT_FOUND) {
+  if (status === HTTP_STATUS_CODE.NOT_FOUND) {
     return <CountryNotFound />;
   }
 
