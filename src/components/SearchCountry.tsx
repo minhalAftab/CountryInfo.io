@@ -1,5 +1,5 @@
 import React from "react";
-import CountryInfoLogo from "../assets/Logo.png";
+import CountryInfoLogo from "../assets/countryInfoLogo.png";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Button, Col, Stack } from "react-bootstrap";
