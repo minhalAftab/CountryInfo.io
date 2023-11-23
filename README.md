@@ -5,6 +5,11 @@
 
 This project entails the creation of a web application that facilitates a user's input of a country name. The application will then make an API call to RESTCountries to retrieve and display pertinent information about the specified country.
 
+### Project Deliverable:
+
+Deployed Link : https://country-info-io-frontend.vercel.app/
+
+
 ### Process Overview:
 
 1. **Wireframe Development:**
@@ -18,8 +23,6 @@ This project entails the creation of a web application that facilitates a user's
 
 4. **Integration of Geographic Information:**
     - Utilization of latitude and longitude data obtained from the API to incorporate a geographical map feature.
-
-#
 
       
 
