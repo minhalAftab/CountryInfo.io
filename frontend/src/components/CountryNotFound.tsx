@@ -4,9 +4,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 
 const CountryNotFound = (props: any) => {
   return (
-    <Container
-      className="full-height align-center"
-    >
+    <Container className="full-height align-center">
       <Row>
         <Col>
           <Image src={CountryNotFoundImage} fluid />

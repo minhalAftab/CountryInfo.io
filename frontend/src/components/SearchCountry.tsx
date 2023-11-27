@@ -22,11 +22,10 @@ const SearchCountry = (props: SeachCountryProps) => {
         .then((response) => {
           setLoading(false);
           setParsedCountryInfo(response.data);
-          setFullCountryInfo(response.data.fullcountryinfo)
+          setFullCountryInfo(response.data.fullcountryinfo);
         });
       setError(false);
       setLoading(true);
-     
     } else {
       setError(true);
     }

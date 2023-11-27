@@ -34,7 +34,7 @@ router.get("/country/:name", (req, res) => {
   // Get name of country from the req object
   const countryName = req.params.name;
   axios
-    .get(`https://restcountries.com/v3.1/name/${countryName}`)
+    .get(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     .then((response) => res.send(parseCountryInfo(response.data)))
     .catch((error) => res.send({ status: 404, msg: "Country not Found!!" }));
 

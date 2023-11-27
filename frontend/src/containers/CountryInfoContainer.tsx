@@ -12,15 +12,15 @@ const CountryInfoContainer = (props: any) => {
 
   return (
     <Container fluid className="gradient">
-      <Row className="full-height">
-        <Col lg={5} className="align-center  ">
+      <Row>
+        <Col lg={5} className="align-center full-height ">
           <SearchCountry
             setParsedCountryInfo={setParsedCountryInfo}
             setLoading={setLoading}
             setFullCountryInfo = {setFullCountryInfo}
           />
         </Col>
-        <Col lg={7} className={`${parsedCountryInfo? "shadow-sm": ""}`}>
+        <Col lg={7} className={`${parsedCountryInfo? "shadow-sm": ""} full-height`}>
           {parsedCountryInfo ? (
             <CountryInfo
               parsedCountryInfo={parsedCountryInfo}

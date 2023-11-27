@@ -24,7 +24,7 @@ import ReactJson from "react-json-view";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
 const mapContainerStyle = {
-  height: "65vh",
+  height: "60vh",
 };
 
 const loadingComponent = () => {
@@ -36,7 +36,7 @@ const loadingComponent = () => {
 };
 
 const CountryInfo = (props: CountryInfoProps) => {
-  const { parsedCountryInfo, loading ,fullCountryInfo} = props;
+  const { parsedCountryInfo, loading, fullCountryInfo } = props;
   const { status, data: countryInfoData, msg } = parsedCountryInfo;
 
   const { isLoaded, loadError } = useLoadScript({
@@ -101,16 +101,15 @@ const CountryInfo = (props: CountryInfoProps) => {
         </Row>
       </Stack>
       {/* Json File View */}
-      <Row>
-
-      <Accordion defaultActiveKey="1">
-        <AccordionItem eventKey={"0"}>
-          <AccordionHeader>View More Information</AccordionHeader>
-          <AccordionBody>
-            <ReactJson src={fullCountryInfo} />
-          </AccordionBody>
-        </AccordionItem>
-      </Accordion>
+      <Row className="mt-2">
+        <Accordion defaultActiveKey="1">
+          <AccordionItem eventKey={"0"}>
+            <AccordionHeader>View Full Response</AccordionHeader>
+            <AccordionBody>
+              <ReactJson src={fullCountryInfo} />
+            </AccordionBody>
+          </AccordionItem>
+        </Accordion>
       </Row>
       {/* Map */}
       <Row>
