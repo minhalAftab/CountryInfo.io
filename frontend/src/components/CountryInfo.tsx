@@ -106,7 +106,7 @@ const CountryInfo = (props: CountryInfoProps) => {
           <AccordionItem eventKey={"0"}>
             <AccordionHeader>View Full Response</AccordionHeader>
             <AccordionBody>
-              <ReactJson src={fullCountryInfo} />
+              <ReactJson collapsed src={fullCountryInfo} />
             </AccordionBody>
           </AccordionItem>
         </Accordion>
