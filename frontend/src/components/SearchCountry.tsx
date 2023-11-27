@@ -12,7 +12,7 @@ import { ENTER_KEY } from "../models/constants";
 const SearchCountry = (props: SeachCountryProps) => {
   const [countryName, setCountryName] = React.useState("");
   const [isError, setError] = React.useState(false);
-  const { setParsedCountryInfo, setLoading } = props;
+  const { setParsedCountryInfo, setLoading, setFullCountryInfo } = props;
 
   const getCountryInfo = () => {
     const trimedCountryName = countryName.trimStart();
@@ -22,9 +22,11 @@ const SearchCountry = (props: SeachCountryProps) => {
         .then((response) => {
           setLoading(false);
           setParsedCountryInfo(response.data);
+          setFullCountryInfo(response.data.fullcountryinfo)
         });
       setError(false);
       setLoading(true);
+     
     } else {
       setError(true);
     }

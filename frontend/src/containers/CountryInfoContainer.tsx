@@ -8,6 +8,7 @@ import ExploreCountry from "../assets/landingPageImage.png";
 const CountryInfoContainer = (props: any) => {
   const [parsedCountryInfo, setParsedCountryInfo] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+  const [fullCountryInfo,setFullCountryInfo] = React.useState({});
 
   return (
     <Container fluid className="gradient">
@@ -16,6 +17,7 @@ const CountryInfoContainer = (props: any) => {
           <SearchCountry
             setParsedCountryInfo={setParsedCountryInfo}
             setLoading={setLoading}
+            setFullCountryInfo = {setFullCountryInfo}
           />
         </Col>
         <Col lg={7} className={`${parsedCountryInfo? "shadow-sm": ""}`}>
@@ -23,6 +25,7 @@ const CountryInfoContainer = (props: any) => {
             <CountryInfo
               parsedCountryInfo={parsedCountryInfo}
               loading={loading}
+              fullCountryInfo = {fullCountryInfo}
             />
           ) : (
             <div className="full-height align-center ">

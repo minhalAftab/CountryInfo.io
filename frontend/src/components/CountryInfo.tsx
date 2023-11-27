@@ -7,6 +7,9 @@ import {
   Card,
   Stack,
   Spinner,
+  Accordion,
+  AccordionItem,
+  AccordionHeader,
 } from "react-bootstrap";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { CountryInfoProps } from "../models/models";
@@ -17,6 +20,8 @@ import { GOOGLE_MAPS_API_KEY } from "../models/constants";
 import InfoCard from "./InfoCard";
 import InfoRow from "./InfoRow";
 import ErrorLoadingMap from "./ErrorLoadingMap";
+import ReactJson from "react-json-view";
+import AccordionBody from "react-bootstrap/esm/AccordionBody";
 
 const mapContainerStyle = {
   height: "65vh",
@@ -31,7 +36,7 @@ const loadingComponent = () => {
 };
 
 const CountryInfo = (props: CountryInfoProps) => {
-  const { parsedCountryInfo, loading } = props;
+  const { parsedCountryInfo, loading ,fullCountryInfo} = props;
   const { status, data: countryInfoData, msg } = parsedCountryInfo;
 
   const { isLoaded, loadError } = useLoadScript({
@@ -95,6 +100,18 @@ const CountryInfo = (props: CountryInfoProps) => {
           </Col>
         </Row>
       </Stack>
+      {/* Json File View */}
+      <Row>
+
+      <Accordion defaultActiveKey="1">
+        <AccordionItem eventKey={"0"}>
+          <AccordionHeader>View More Information</AccordionHeader>
+          <AccordionBody>
+            <ReactJson src={fullCountryInfo} />
+          </AccordionBody>
+        </AccordionItem>
+      </Accordion>
+      </Row>
       {/* Map */}
       <Row>
         <Col>

@@ -3,28 +3,29 @@ const express = require("express");
 const router = express.Router();
 
 const parseCountryInfo = (data) => {
-  const countryinfordata = data[0];
-  const languages = Object.keys(countryinfordata.languages).map(
-    (key) => countryinfordata.languages[key]
+  const countryinfodata = data[0];
+  const languages = Object.keys(countryinfodata.languages).map(
+    (key) => countryinfodata.languages[key]
   );
-  const currency = Object.keys(countryinfordata.currencies)[0];
+  const currency = Object.keys(countryinfodata.currencies)[0];
   const parsedData = {
-    name: countryinfordata.name.common,
-    region: countryinfordata.region,
-    flag: countryinfordata.flags.png,
-    capital: countryinfordata.capital[0],
-    population: countryinfordata.population,
+    name: countryinfodata.name.common,
+    region: countryinfodata.region,
+    flag: countryinfodata.flags.png,
+    capital: countryinfodata.capital[0],
+    population: countryinfodata.population,
     languages: languages,
-    currencies: countryinfordata.currencies[currency].name,
+    currencies: countryinfodata.currencies[currency].name,
     center: {
-      lat: countryinfordata.latlng[0],
-      lng: countryinfordata.latlng[1],
+      lat: countryinfodata.latlng[0],
+      lng: countryinfodata.latlng[1],
     },
   };
 
   return {
     status: 200,
-    data: parsedData
+    data: parsedData,
+    fullcountryinfo :countryinfodata
   };
 };
 
@@ -35,7 +36,7 @@ router.get("/country/:name", (req, res) => {
   axios
     .get(`https://restcountries.com/v3.1/name/${countryName}`)
     .then((response) => res.send(parseCountryInfo(response.data)))
-    .catch((error) => res.send({status:404,msg:"Country not Found!!"}));
+    .catch((error) => res.send({ status: 404, msg: "Country not Found!!" }));
 
 });
 

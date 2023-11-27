@@ -10,16 +10,19 @@ export interface CountryInfoDTO {
     lat: number;
     lng: number;
   };
+
 }
 
 export type CountryInfoProps = {
   parsedCountryInfo: GetCountryInfoOutput;
   loading: boolean;
+  fullCountryInfo : {}
 };
 
 export type SeachCountryProps = {
   setParsedCountryInfo: React.Dispatch<React.SetStateAction<null>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setFullCountryInfo : React.Dispatch<React.SetStateAction<{}>>
 };
 
 export type InfoCardProps = {
