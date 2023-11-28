@@ -50,10 +50,10 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 ## Process Overview:
 
 1. **Wireframe Development:**
-    - Initial creation of a basic mockup to outline the user interface's structure and functionalities.
+    - Initial creation of a basic mockup to outline the user interface's structure and functionalities on Figma.
 
 2. **High-Fidelity Design:**
-    - Enhanced and detailed design development based on the wireframe, focusing on user experience and visual aesthetics.
+    - Enhanced and detailed design development based on the Figma wireframe, focusing on user experience and visual aesthetics.
 
 3. **Implementation using React:**
     - Translating the designed interface into a functional web application using React framework.
