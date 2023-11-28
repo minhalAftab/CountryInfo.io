@@ -62,8 +62,8 @@ const CountryInfo = (props: CountryInfoProps) => {
             <Card.Title>Country in {countryInfoData.region}</Card.Title>
           </Col>
         </Row>
-        <Row className="mt-3">
-          <Col lg={3}>
+        <Row className="mt-3" >
+          <Col lg={3} sm = {4}>
             <Image
               className="shadow-sm "
               bsPrefix="img"
@@ -73,12 +73,13 @@ const CountryInfo = (props: CountryInfoProps) => {
               }}
               rounded
               src={countryInfoData.flag}
+              fluid
             />
           </Col>
-          <Col lg={3}>
+          <Col lg={3} sm = {4}>
             <InfoCard header={"Capital"} content={countryInfoData.capital} />
           </Col>
-          <Col lg={3}>
+          <Col lg={3} sm = {4}>
             <InfoCard
               header={"Population"}
               content={countryInfoData.population}
