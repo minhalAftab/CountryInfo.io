@@ -18,16 +18,16 @@ describe("App Componenet", () => {
 
   it("should search for country name and if input is inccorect should show country not found image", () => {
     cy.get(".form-control").type("China123{Enter}");
-    cy.get(".img-fluid").should("be.visible");
+    cy.wait(500).get(".img-fluid").should("be.visible");
   });
 
   it("should search for country name and if input is correct should click view full response dropdown and check if country name in response is exactly same", () => {
-    cy.get(".form-control").type("United Kingdom{Enter}");
+    cy.get(".form-control").type("Pakistan{Enter}");
     cy.get('.accordion-button').click()
     cy.get('.pretty-json-container > :nth-child(1) > :nth-child(1) > :nth-child(1) > [style="display: inline-block; cursor: pointer;"] > [style="display: inline-block; color: rgb(0, 43, 54); letter-spacing: 0.5px; vertical-align: top; opacity: 0.85;"] > .object-key > :nth-child(1)').click()
     cy.get('.pushed-content > .object-content > :nth-child(1) > :nth-child(1) > [style="display: inline-block; cursor: pointer;"] > [style="display: inline-block; color: rgb(0, 43, 54); letter-spacing: 0.5px; vertical-align: top; opacity: 0.85;"] > .object-key > :nth-child(2)').click()
-    cy.get(':nth-child(1) > .variable-value > div > .string-value').should('have.text', '"United Kingdom"')
-    cy.wait(2000).get('.accordion-button').click()
+    cy.get(':nth-child(1) > .variable-value > div > .string-value').should('have.text', '"Pakistan"')
+    cy.wait(1000).get('.accordion-button').click()
 
   });
 
