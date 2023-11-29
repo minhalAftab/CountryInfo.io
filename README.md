@@ -13,16 +13,15 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 ## How To Setup:
 
 **1. Clone Repository:**
-
 - Clone the folder onto your desktop or preferred directory.
 
 **2. Access Terminal or PowerShell:**
 - Open your terminal and navigate to the cloned folder.
 
 **3. Change Directory to Frontend:**
-- Execute the command in the terminal to navigate to the Frontend directory.
+- Execute the command in the terminal to navigate to the frontend directory.
   
-        cd ./frontend     
+        cd ./frontend/     
 
 **4. Install Dependencies:**
 - Run Command to install necessary dependencies.
@@ -45,6 +44,36 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 2. **Error Handling:**
     - Ensure the entered name matches an existing country; errors may occur if the country name is not found.
 
+
+## How to setup Cypress Frontend Testing:
+
+**1. Access Terminal or PowerShell:**
+- Open your terminal and navigate to the cloned folder.
+
+**2. Change Directory to Testing Folder:**
+- Execute the command in the terminal to navigate to the testing directory.
+  
+        cd ./testing/
+
+**3. Install Cypress:**
+- Run Command to install necessary dependencies.
+
+        npm install cypress --dev
+
+## How to Run Cypress Frontend Testing 
+
+**1. Open Cypress Application:**
+- Run Command to open the application
+
+        npx cypress open
+  
+
+**2. Select E2E Testing**
+- A window will open with two options to select from. Choose the E2E testing.
+
+
+**3. Select App.cy.js File:**
+- Once you select the `app.cy.js` file you will see the test being run within the Cypress interface. This file contains the tests to be executed.
 
 
 ## Process Overview:
