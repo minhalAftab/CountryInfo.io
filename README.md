@@ -58,7 +58,7 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 **3. Install Cypress:**
 - Run Command to install necessary dependencies.
 
-        npm install cypress --dev
+        npm install --dev
 
 ## How to Run Cypress Frontend Testing 
 
@@ -71,10 +71,36 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 **2. Select E2E Testing**
 - A window will open with two options to select from. Choose the E2E testing.
 
+**2. Select Current Browser**
+- A window will open with multiple browser options, select your preferred browser and click on the start E2E testing on "selected" browser button.
 
-**3. Select App.cy.js File:**
+**4. Select App.cy.js File:**
 - Once you select the `app.cy.js` file you will see the test being run within the Cypress interface. This file contains the tests to be executed.
 
+
+## How to setup Jest Backend Testing:
+
+**1. Access Terminal or PowerShell:**
+- Open your terminal and navigate to the cloned folder.
+
+**2. Change Directory to Testing Folder:**
+- Execute the command in the terminal to navigate to the testing directory.
+  
+        cd ./testing/
+  
+**3. Install Jest:**
+- Run Command to install necessary dependencies. If cypress testing is done then install command is not neccessary.
+
+        npm install -D 
+
+## How to Run Jest Backend Testing 
+
+**1. Run Test:**
+- Run Command to see the test result.
+
+      node ./node_modules/jest/bin/jest.js --runInBand
+
+The handler.t.js file inside \_\_test\_\_ includes the tests that are being run.
 
 ## Process Overview:
 
@@ -89,6 +115,9 @@ Deployed Link FrontEnd : https://country-info-io-frontend.vercel.app/
 
 4. **Integration of Geographic Information:**
     - Utilization of latitude and longitude data obtained from the API to incorporate a geographical map feature.
+
+4. **Integration of Cypress and Jest Testing:**
+    - Integrated frontend and backend testing.
 
       
 
