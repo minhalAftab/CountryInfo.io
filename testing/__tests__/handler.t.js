@@ -1,6 +1,6 @@
 const supertest = require("supertest");
 
-const baseurl = "https://country-info-io.vercel.app/";
+const baseurl = "http://localhost:4000/";
 
 describe("Test Handlers", () => {
   it("Should return status 200 when valid country name is provided", async () => {

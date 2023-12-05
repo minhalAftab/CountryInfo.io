@@ -10,6 +10,7 @@ export interface CountryInfoDTO {
     lat: number;
     lng: number;
   };
+  
 }
 
 export type CountryInfoProps = {

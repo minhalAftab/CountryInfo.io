@@ -53,7 +53,7 @@ const CountryInfo = (props: CountryInfoProps) => {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <Stack gap={4}>
         <Row>
           <Col>

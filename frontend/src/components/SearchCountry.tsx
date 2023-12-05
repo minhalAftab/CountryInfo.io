@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 import { SeachCountryProps } from "../models/models";
 import "../styles/common.css";
 import { ENTER_KEY } from "../models/constants";
+import { error } from "console";
 
 const SearchCountry = (props: SeachCountryProps) => {
   const [countryName, setCountryName] = React.useState("");
@@ -17,21 +18,24 @@ const SearchCountry = (props: SeachCountryProps) => {
   const getCountryInfo = () => {
     const trimedCountryName = countryName.trimStart();
     if (trimedCountryName.length > 0) {
+      setLoading(true);
       axios
-        .get(`https://country-info-io.vercel.app/country/${trimedCountryName}`)
+        .get(`http://localhost:4000/country/${trimedCountryName}`)
         .then((response) => {
           setLoading(false);
           setParsedCountryInfo(response.data);
           setFullCountryInfo(response.data.fullcountryinfo);
-          if (response.data.status === 200){
-            setError(false)
-          } else{
-            setError(true)
+          if (response.data.status === 200) {
+            setError(false);
+          } else {
+            setError(true);
           }
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        
+
       // setError(false);
-      setLoading(true);
     } else {
       setError(true);
     }

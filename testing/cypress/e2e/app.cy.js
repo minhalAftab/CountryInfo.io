@@ -2,7 +2,7 @@
 
 describe("App Componenet", () => {
   beforeEach(() => {
-    cy.visit("https://country-info-io-frontend.vercel.app/");
+    cy.visit("http://localhost:3000/");
   });
 
   it("should search for country name provided in input text when search button is clicked", () => {

@@ -20,6 +20,7 @@ const parseCountryInfo = (data) => {
       lat: countryinfodata.latlng[0],
       lng: countryinfodata.latlng[1],
     },
+ 
   };
 
   return {
